@@ -13,7 +13,7 @@
 //#include<map>
 using namespace std;
 
-char list[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
+char list[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' }; //10~15는 알파벳으로 표현하기 위해 간략하게 배열로 저장
 string solution(int n, int t, int m, int p) {
     string answer = "";
     string tmp = "";
@@ -27,10 +27,10 @@ string solution(int n, int t, int m, int p) {
         num = cnt;
         cout << num << endl;
         while (num > 0) {
-            tmp += list[num % n];   
+            tmp += list[num % n];   //진법 변환 함수
             num /= n;
         }
-        reverse(tmp.begin(), tmp.end());
+        reverse(tmp.begin(), tmp.end()); //진법 변환시 거꾸로 저장이 되므로 문자열 뒤집기함수 reverse사용
         result += tmp;
         tmp = "";
         cout << result << endl;
@@ -38,10 +38,11 @@ string solution(int n, int t, int m, int p) {
         cout << cnt << endl;
     }
 
-    for (int i = p-1; i < result.size(); i=i+m) {
+    for (int i = p-1; i < result.size(); i=i+m) { //m번째씩 저장
         answer += result[i];
     }
-    cout << answer.substr(0,t) << endl;
+   
+    answer = answer.substr(0,t); //문자열 자르기 함수를 통해 뽑고자 하는 개수 저장
     return answer;
 }
 int main()
